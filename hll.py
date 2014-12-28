@@ -24,7 +24,7 @@ class Hll:
         sum = 0;
         for i in range(len(self.buckets)):
             sum += 1/(2**(self.buckets[i]));
-            print self.buckets[i];
+            # print self.buckets[i]; JSS NOOB MAIS J'AIME PAS
         sum = 1.0/sum;
         e = self.alpha*(len(self.buckets)**2)*sum;
 
