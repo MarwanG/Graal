@@ -167,18 +167,12 @@ vector<double> RunExternalCommandToEstimateLineCardinality(
 }
 
 bool TestExternalCommandToEstimateCardinality(const string& command) {
-<<<<<<< HEAD
+
 	const int kNumTests = 8;
 	const int kCardinalities[kNumTests] =
 	{0, 1, 10, 100, 1000, 10000, 100000, 1000000};
 	const int kTimeLimits[kNumTests] = {3, 3, 5, 10, 10, 15, 20, 30};
 
-=======
-  const int kNumTests = 8;
-  const int kCardinalities[kNumTests] =
-      {0, 1, 10, 100, 1000, 10000, 100000, 1000000};
-  const int kTimeLimits[kNumTests] = {3, 3, 5, 10, 10, 15, 20, 30};
->>>>>>> FETCH_HEAD
   int num_biased_estimates = 0;
   for (int i = 0; i < kNumTests; ++i) {
     const int cardinality = kCardinalities[i];

@@ -16,11 +16,8 @@ class Client:
 		while x:
 			hll.AddItem(mmh3.hash(x))
 			x = sys.stdin.readline().rstrip('\n')
-<<<<<<< HEAD
 		print hll.Count()
-=======
-		print hll.count()
->>>>>>> FETCH_HEAD
+
 
 
 def main():

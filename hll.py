@@ -41,13 +41,8 @@ class Hll:
     def Count(self):
         sum = 0;
         for i in range(len(self.buckets)):
-<<<<<<< HEAD
-            sum += math.pow(2.0, -self.buckets[i])
-#            print self.buckets[i]; #JSS NOOB MAIS J'AIME PAS
-=======
-            sum += 1/(2**(self.buckets[i]));
-            # print self.buckets[i]; JSS NOOB MAIS J'AIME PAS
->>>>>>> FETCH_HEAD
+
+		sum += math.pow(2.0, -self.buckets[i])
         sum = 1.0/sum;
  #       print "somme="+str(sum)
         e =  self.alpha(self.m)*float(self.m**2)*sum;
@@ -64,12 +59,8 @@ class Hll:
         return e;
 
     def rho(self,val):
-<<<<<<< HEAD
        rho = (32 - self.b) - val.bit_length() + 1
        return rho
-
-=======
-        return 64 - val.bit_length() + 1;
 
 
 
@@ -85,4 +76,3 @@ def main():
 
 if __name__ == '__main__':
   main()  
->>>>>>> FETCH_HEAD
