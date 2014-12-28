@@ -16,15 +16,16 @@ class Hll:
            self.buckets.append(0);
 
     def AddItem(self,h):
-        j = h >> (h.bit_length() -self.b);
-        w = h & (h.bit_length() -self.b);
+  #      print 32;
+        j = h >> (32 -self.b);
+        w = h & (32 -self.b);
         self.buckets[j] = max(  self.buckets[j], self.rho(w)  );
 
     def count(self):
         sum = 0;
         for i in range(len(self.buckets)):
             sum += 1/(2**(self.buckets[i]));
-            print self.buckets[i];
+            # print self.buckets[i]; JSS NOOB MAIS J'AIME PAS
         sum = 1.0/sum;
         e = self.alpha*(len(self.buckets)**2)*sum;
 
@@ -41,16 +42,19 @@ class Hll:
         return e;
 
     def rho(self,val):
-        return 64 - val.bit_length() + 1;
+        return 32 - val.bit_length() + 1;
 
-test = Hll(16);
 
-v = mmh3.hash("coucou")
 
 #print v.bit_length()
 
+#def main():
+#    test = Hll(16);
+#    v = mmh3.hash("coucou")
+##    test.AddItem(mmh3.hash("abc"));
+#   test.AddItem(mmh3.hash("ab"));
+#    test.AddItem(mmh3.hash("abc"));
+#    print test.count();
 
-test.AddItem(mmh3.hash("abc"));
-test.AddItem(mmh3.hash("ab"));
-test.AddItem(mmh3.hash("abc"));
-print test.count();
+#if __name__ == '__main__':
+#  main()
