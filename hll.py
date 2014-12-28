@@ -43,14 +43,17 @@ class Hll:
     def rho(self,val):
         return 64 - val.bit_length() + 1;
 
-test = Hll(16);
 
-v = mmh3.hash("coucou")
 
 #print v.bit_length()
 
+def main():
+    test = Hll(16);
+    v = mmh3.hash("coucou")
+    test.AddItem(mmh3.hash("abc"));
+    test.AddItem(mmh3.hash("ab"));
+    test.AddItem(mmh3.hash("abc")); 
+    print test.count();
 
-test.AddItem(mmh3.hash("abc"));
-test.AddItem(mmh3.hash("ab"));
-test.AddItem(mmh3.hash("abc"));
-print test.count();
+if __name__ == '__main__':
+  main()  
