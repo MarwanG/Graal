@@ -8,11 +8,12 @@ import math
 class Hll:
     
     def __init__(self, p):
-       self.b = 16;
+       self.b = p;
        self.buckets = [];
        self.m = 2**self.b;
        for i in range (self.m):
            self.buckets.append(0);
+
 
     def alpha(self, m):
         if m == 16:
@@ -23,44 +24,45 @@ class Hll:
             return 0.709
         return 0.7213/(1+ 1.079/m)
 
-    def AddItem(self,h):
-#        print bin(h)
-        h = h % (2**32)
-  #      print bin(h)
-        j = h & (self.m - 1)
-        w = h >> self.b
-#        print bin(h)
-#        print bin(j)
- #       print bin(w)
- #      str(self.rho(w))
-        self.buckets[j] = max(  self.buckets[j], self.rho(w)  );
+    def AddItem(self, n):
+        n = (n & (2**(32) -1)) + 2**32
+#        print "N="+bin(n)
+        j = n >> (32 - self.b)
+#        print "J="+bin(j)
+        j = j - 2**self.b
+        w = n & 2**(32 - self.b) -1
  
-        #print "=";
-       # print str(self.buckets[j]);
+        w = w + 2**(32 - self.b)
+#        print "W:                "+bin(w) 
+        r = self.rho(w)
+        self.buckets[j] = max(  self.buckets[j], r );
+        
+#        print "J= "+bin(j)
+#        print "W:                "+bin(w) + "   >> rho =" + str(r) + ")"
+#        print ""
 
     def Count(self):
         sum = 0;
         for i in range(len(self.buckets)):
-
-		sum += math.pow(2.0, -self.buckets[i])
+            sum += math.pow(2.0, -self.buckets[i])
+ #           print self.buckets[i]
         sum = 1.0/sum;
- #       print "somme="+str(sum)
         e =  self.alpha(self.m)*float(self.m**2)*sum;
- #       print "e="+str(e)
-        
         v = 0;
         for i in range(self.m):
-           if (self.buckets[i] == 0):
-                   v+=1;
-           if(v != 0):
-               e = self.m * math.log(self.m/float(v))
-
- #       print v
+            if (self.buckets[i] == 0):
+                v+=1;
+            if(v != 0):
+                e = self.m * math.log(self.m/float(v))
         return e;
 
     def rho(self,val):
-       rho = (32 - self.b) - val.bit_length() + 1
-       return rho
+#        print "VAL="+bin(val)
+        val = val & 2**(32 - self.b)-1
+#        print "VA2="+bin(val)
+        rho = (33 - self.b) - val.bit_length()
+#        print rho
+        return rho 
 
 
 
@@ -72,7 +74,7 @@ def main():
     test.AddItem(mmh3.hash("abc"));
     test.AddItem(mmh3.hash("ab"));
     test.AddItem(mmh3.hash("abc")); 
-    print test.count();
+ #   print test.count();
 
 if __name__ == '__main__':
   main()  
