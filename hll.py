@@ -48,12 +48,18 @@ class Hll:
  #           print self.buckets[i]
         sum = 1.0/sum;
         e =  self.alpha(self.m)*float(self.m**2)*sum;
-        v = 0;
-        for i in range(self.m):
-            if (self.buckets[i] == 0):
-                v+=1;
-            if(v != 0):
-                e = self.m * math.log(self.m/float(v))
+
+        if(e < 5.0/2*self.m): 
+            v = 0; 
+            for i in range(self.m):
+                if (self.buckets[i] == 0):
+                    v+=1;
+                if(v != 0):
+                    e = self.m * math.log(self.m/float(v))
+        
+        if(e > 1.0/30*2**32):
+            e = -2**32*math.log(self.m/2**32)
+        
         return e;
 
     def rho(self,val):
