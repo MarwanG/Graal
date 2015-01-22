@@ -14,9 +14,9 @@ class Client:
 		hll = Hll(self.p)
 		x = sys.stdin.readline().rstrip('\n')
 		while x:
-			hll.AddItem(mmh3.hash(x))
+			hll.AddItem64(mmh3.hash64(str(x))[0])
 			x = sys.stdin.readline().rstrip('\n')
-		print hll.Count()
+		print hll.Count64()
 
 
 

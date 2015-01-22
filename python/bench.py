@@ -16,7 +16,7 @@ class Benchmark:
                 debut = int(round (time.time() * 1000))
                 for x in range (0, int(self.n)):
 			hll.AddItem(x)
-                hll.Count()
+                print hll.Count()
                 fin = int(round (time.time() * 1000))
                 print "temps = "+str(fin-debut)+"ms";
 
@@ -49,7 +49,7 @@ class Benchmark:
 
 
 def main():
-        print sys.argv[1];
+ 
    	bencheur = Benchmark(14, sys.argv[1])
    	bencheur.gogo();
 
