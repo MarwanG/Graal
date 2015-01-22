@@ -11,17 +11,6 @@ class Benchmark:
 		self.p = p
                 self.n = n
 
-        def gogo(self):
-                hll = Hll(self.p)
-                debut = int(round (time.time() * 1000))
-                for x in range (0, int(self.n)):
-			hll.AddItem(x)
-                print hll.Count()
-                fin = int(round (time.time() * 1000))
-                print "temps = "+str(fin-debut)+"ms";
-
-
-
 	def go(self):
 		hll = Hll(self.p)
 		hashvalues = []
@@ -51,7 +40,7 @@ class Benchmark:
 def main():
  
    	bencheur = Benchmark(14, sys.argv[1])
-   	bencheur.gogo();
+	bencheur.go();
 
 if __name__ == '__main__':
   main()  
