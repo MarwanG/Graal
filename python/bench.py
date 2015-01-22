@@ -15,7 +15,7 @@ class Benchmark:
                 hll = Hll(self.p)
                 debut = int(round (time.time() * 1000))
                 for x in range (0, int(self.n)):
-                    hll.AddItem(x)
+			hll.AddItem(x)
                 hll.Count()
                 fin = int(round (time.time() * 1000))
                 print "temps = "+str(fin-debut)+"ms";
@@ -26,24 +26,23 @@ class Benchmark:
 		hll = Hll(self.p)
 		hashvalues = []
                 for x in range (0,int(self.n)):
-                    hashvalues.append(mmh3.hash(str(x)))
+			hashvalues.append(mmh3.hash(str(x)))
 
                 debut = int(round (time.time() * 1000))
                 for i in range(0, int(self.n)):
-		    		hll.AddItem(hashvalues[i])
+		    	hll.AddItem(hashvalues[i])
                 fin = int(round (time.time() * 1000))
 		print hll.Count()
                 print "temps = "+str(fin-debut)+"ms";
-
         
         def go64(self):
             	hll = Hll(self.p)
                 hashvalues = []
                 for x in range (0,int(self.n)):
-                    hashvalues.append(mmh3.hash64(str(x))[0])
+			hashvalues.append(mmh3.hash64(str(x))[0])
                 debut = int(round (time.time() * 1000))
                 for i in range(0, int(self.n)):
-		    		hll.AddItem64(hashvalues[i])
+			hll.AddItem64(hashvalues[i])
                 fin = int(round (time.time() * 1000))
 		print hll.Count64()
                 print "temps = "+str(fin-debut)+"ms";

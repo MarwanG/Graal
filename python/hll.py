@@ -37,7 +37,7 @@ class Hll:
     def AddItem64(self,n):
         # on met un 1 au 32eme bit pour que les entiers soient tous de la meme longueur
         #numero du bucket 
-		j = n >> (64 - self.b)
+	j = n >> (64 - self.b)
         # reste
         w = n & 2**(64 - self.b) -1
         w = w + 2**(64 - self.b)
@@ -49,20 +49,20 @@ class Hll:
         sum = 0;
         #calcul de la moyenne harmonique
         for i in range(len(self.buckets)):
-            sum += math.pow(2.0, -self.buckets[i])
+		sum += math.pow(2.0, -self.buckets[i])
         sum = 1.0/sum;
         e =  self.alpha(self.m)*float(self.m**2)*sum;
 
         if(e < 5.0/2*self.m): # linear counting
-            v = 0; 
-            for i in range(self.m):
-                if (self.buckets[i] == 0):
-                    v+=1;
-            if(v != 0):
-                e = self.m * math.log(self.m/float(v))
+		v = 0; 
+            	for i in range(self.m):
+                	if (self.buckets[i] == 0):
+                    		v+=1;
+            	if(v != 0):
+                	e = self.m * math.log(self.m/float(v))
         
         if(e > 1.0/30*2**32): # correction
-            e = -2**32*math.log(self.m/2**32)
+            	e = -2**32*math.log(self.m/2**32)
         
         return e;
 
@@ -70,21 +70,20 @@ class Hll:
         sum = 0;
         #calcul de la moyenne harmonique
         for i in range(len(self.buckets)):
-            sum += math.pow(2.0, -self.buckets[i])
+            	sum += math.pow(2.0, -self.buckets[i])
         sum = 1.0/sum;
         e =  self.alpha(self.m)*float(self.m**2)*sum;
 
         if(e < 5.0/2*self.m): # linear counting
-            v = 0;
-            for i in range(self.m):
-                if (self.buckets[i] == 0):
-                    v+=1;
-            if(v != 0):
-                e = self.m * math.log(self.m/float(v))
+            	v = 0;
+            	for i in range(self.m):
+                	if (self.buckets[i] == 0):
+                    		v+=1;
+            	if(v != 0):
+                	e = self.m * math.log(self.m/float(v))
 			
         if(e > 1.0/30*2**64): # correction
-            e = -2**64*math.log(self.m/2**64)
-        e = 1
+            	e = -2**64*math.log(self.m/2**64)
         return e;
 
 
