@@ -97,8 +97,14 @@ class Hll:
         rho = (65 - self.b) - val.bit_length()
         return rho 
 
+    def CountLinear(self):
+	v = 0;
+   	for i in range(self.m):
+       	    if (self.buckets[i] == 0):
+                v+=1;
 
-
+     	return self.m * math.log(self.m/float(v))
+ 
 
 
 def main():
