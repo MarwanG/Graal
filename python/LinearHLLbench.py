@@ -25,7 +25,7 @@ valuesLinear = []
 
 CARD = 100000
 NB = 10
-STEP = 100
+STEP = 500
 
 # Un tableau de CARD/STEP cardinalites
 for i in range(CARD/STEP):
