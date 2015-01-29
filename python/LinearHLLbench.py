@@ -38,7 +38,7 @@ for x in range(NB):
     print x
     hll = Hll(14)
     for j in range(CARD):
-        hll.AddItem64(mmh3.hash64(str(random.randrange(0,CARD)))[0])
+        hll.AddItem64(mmh3.hash64(str(random.randrange(0,CARD*10)))[0])
         # Tous les STEP
         if j%STEP == 0:
             countLinear = hll.CountLinear()
