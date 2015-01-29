@@ -77,5 +77,5 @@ int main(int argc, char* argv[])
 	for(i = 0; i < size; i++){
 		hll.AddItem(hash[i]);
 	}
-	cout << "y en a " << hll.Count() << endl;
+	//cout << "y en a " << hll.Count() << endl;
 }
