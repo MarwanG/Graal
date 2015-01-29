@@ -74,13 +74,13 @@ class Hll:
         sum = 1.0/sum;
         e =  self.alpha(self.m)*float(self.m**2)*sum;
 
-        if(e < 5.0/2*self.m): # linear counting
-            	v = 0;
-            	for i in range(self.m):
-                	if (self.buckets[i] == 0):
-                    		v+=1;
-            	if(v != 0):
-                	e = self.m * math.log(self.m/float(v))
+     #   if(e < 5.0/2*self.m): # linear counting
+      #      	v = 0;
+       #     	for i in range(self.m):
+        #        	if (self.buckets[i] == 0):
+         #           		v+=1;
+          #  	if(v != 0):
+           #     	e = self.m * math.log(self.m/float(v))
 			
         if(e > 1.0/30*2**64): # correction
             	e = -2**64*math.log(self.m/2**64)
