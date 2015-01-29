@@ -9,22 +9,21 @@ import random
 import math
 
 def percentile(v,x):
-        values[i].sort()
+        v.sort()
         pos = int((len(v)-1)*x)
         if(math.floor(pos) == pos):
-            print pos
             return v[pos];
         return (pos - math.floor(pos)) * v[pos] + ( math.ceil(pos) - pos) * v[pos+1]; 
 
 
-f = open('linearRes.txt', 'w')
+f = open('linearError.txt', 'w')
 f.write("# x \t avg \t error \n  ")
 
 valuesLinear = []
 
 
 CARD = 100000
-NB = 10
+NB = 1000
 STEP = 500
 
 # Un tableau de CARD/STEP cardinalites
@@ -42,6 +41,8 @@ for x in range(NB):
         # Tous les STEP
         if j%STEP == 0:
             countLinear = hll.CountLinear()
+            if j != 0 : 
+                countLinear = math.fabs(countLinear-j)/j
             valuesLinear[j/STEP].append(countLinear)
 
 for i in range(len(valuesLinear)):
@@ -50,8 +51,10 @@ for i in range(len(valuesLinear)):
         sumLinear = sumLinear + valuesLinear[i][j]
     avgLinear = sumLinear / len(valuesLinear[i])
     error = 0
-    if i!=0 :
-        error = math.fabs(i*STEP-avgLinear)/(i*STEP)
-    f.write(str(i*STEP) + "\t" + str(avgLinear) + "\t" + str(error) + "\n");
-   
+    mid = percentile(valuesLinear[i],0.50)
+    one = percentile(valuesLinear[i],0.01)
+    ninetynine = percentile(valuesLinear[i],0.99)
+
+
+    f.write(str(i*STEP) + "\t" + str(avgLinear) + "\t" + str(mid) + "\t" + str(one) + "\t"+ str(ninetynine)+ "\n")
 f.close()    
