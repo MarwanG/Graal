@@ -3,7 +3,7 @@ set output "hll.png"
 set title "HyperLogLog"
 set xlabel "Cardinality"
 set ylabel "Estimation"
-plot "res.txt" using 1:2 title 'Average' with lines, \
+plot "HllRaw.txt" using 1:2 title 'Average' with lines, \
 "HllRaw.txt" using 1:3 title 'Median' with lines, \
 "HllRaw.txt" using 1:4 title '1%' with lines, \
 "HllRaw.txt" using 1:5 title '99%' with lines, \

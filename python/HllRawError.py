@@ -16,11 +16,12 @@ def percentile(v,x):
         return (pos - math.floor(pos)) * v[pos] + ( math.ceil(pos) - pos) * v[pos+1]; 
 
 
-f = open('resError.txt', 'w')
+f = open('HllRawError.txt', 'w')
 f.write("# x \t avg \t 50% \t 1% \t 99% \n")
 
 values = []
 
+z = 0;
 
 
 CARD = 100000
@@ -37,7 +38,8 @@ for x in range(NB):
     print x
     hll = Hll(14)
     for j in range(CARD):
-        hll.AddItem64(mmh3.hash64(str(random.randrange(0,CARD*10)))[0])
+        hll.AddItem64(mmh3.hash64(str(z))[0])
+        z+=1;
         # Tous les STEP
         if j%STEP == 0:
             count = hll.Count64()

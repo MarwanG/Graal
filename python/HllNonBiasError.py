@@ -39,10 +39,11 @@ f = open('HllNonBiasError.txt', 'w')
 f.write("# x \t avg \t 50% \t 1% \t 99% \n")
 
 CARD = 100000
-NB = 10
+NB = 100
 STEP = 500
 
 values = []
+z = 0
 
 # Un tableau de CARD/STEP cardinalites
 for i in range(CARD/STEP):
@@ -54,7 +55,8 @@ for x in range(NB):
     hll = Hll(14)
     print x
     for j in range(CARD):
-        hll.AddItem64(mmh3.hash64(str(random.randrange(0,CARD*10)))[0])
+        hll.AddItem64(mmh3.hash64(str(z))[0])
+	z+=1
         # Tous les STEP
         if j%STEP == 0:
             count = hll.Count64()
@@ -84,4 +86,4 @@ for i in range(len(values)):
     
     f.write(str(i*STEP) + "\t" + str(avg) + "\t" + str(mid) + "\t" + str(one) + "\t"+ str(ninetynine)+ "\n")
 
-f.close()    
+f.close()
