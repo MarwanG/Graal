@@ -9,7 +9,7 @@ import random
 import math
 
 def percentile(v,x):
-        values[i].sort()
+        v.sort()
         pos = int((len(v)-1)*x)
         if(math.floor(pos) == pos):
             return v[pos];
