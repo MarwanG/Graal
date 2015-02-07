@@ -7,6 +7,7 @@
 #include <stdint.h>
 #include <vector>
 #include <algorithm>
+
 using namespace std;
 
 Hll::Hll(int p) : b(p){
@@ -38,22 +39,20 @@ void Hll::AddItem32(unsigned int n) {
 	unsigned int w = 0;
 	w = n & ((1<<(32-b))-1);
 	r = __builtin_clz(w) - b + 1;
-	//	cout << "j=" << j << ", w = " << w << " and r =" << r << endl;
 	buckets[j] = max(buckets[j], r);
 }
 
 
-void Hll::AddItem(uint64_t n) {
+void Hll::AddItem64(uint64_t n) {
 	uint64_t j = n >> (64 - b);
 	int r = 0;
 	uint64_t w = 0;
 	w = n & ((1<<(64-b))-1);
 	r = __builtin_clzll(w) - b + 1;
-	//cout << "n="<< n << " j=" << j << ", w = " << w << " and r =" << r << endl;
 	buckets[j] = max(buckets[j], r);
 }
 
-double Hll::Linear() {
+double Hll::Linear32() {
 	double e = 0;
 	int v = 0;
 	for(int i =0; i < m; i++){
@@ -62,13 +61,26 @@ double Hll::Linear() {
 		}
 	}
 	if(v >0){
-		//cout << "V=" << v << endl;
 		e = m*log((float)m/v);
 	}
 	
 	return e;
 }
 
+double Hll::Linear64() {
+	double e = 0;
+	uint64_t v = 0;
+	for(int i =0; i < m; i++){
+		if(buckets[i] == 0){
+			v++;
+		}
+	}
+	if(v >0){
+		e = m*log((float)m/v);
+	}
+	
+	return e;
+}
 
 double Hll::Count32(){
 	double sum = 0.0;
@@ -80,16 +92,7 @@ double Hll::Count32(){
 	sum = 1.0/sum;
 	e = alpha(m)*(m*m)*sum;
 	if(e < 5.0/2*m){
-		int v = 0;
-		for(int i =0; i < m; i++){
-			if(buckets[i] == 0){
-				v++;
-			}
-		}
-		if(v >0){
-			//cout << "V=" << v << endl;
-			e = m*log((float)m/v);
-		}
+		e = Linear32();
 	}
 	else if(e > 1.0/(30*pow(2,32))){
 		e = -1*pow(2,32)*log(m/(pow(2,32)));
@@ -98,7 +101,7 @@ double Hll::Count32(){
 	return e;
 }
 
-double Hll::Count(){
+double Hll::Count64(){
 	double sum = 0.0;
 	double e = 0.0;
 	for( int i = 0; i < m; i++){
@@ -106,22 +109,28 @@ double Hll::Count(){
 	}
 	sum = 1.0/sum;
 	e = alpha(m)*(m*m)*sum;
-	/*	if(e < 5.0/2*m){
-		uint64_t v = 0;
-		for(int i =0; i < m; i++){
-	 if(buckets[i] == 0){
-	 v++;
+	if(e < 5.0/2*m){
+		e = Linear64();
 	 }
-		}
-		if(v >0){
-	 //cout << "V=" << v << endl;
-	 e = m*log((float)m/v);
-		}
-	 }
-	 else if(e > 1.0/(30*pow(2,32))){
+/*	 else if(e > 1.0/(30*pow(2,32))){
 		e = -1*pow(2,32)*log(m/(pow(2,32)));
 	 }
-	 */
+*/
+	return e;
+}
+
+double Hll::CountRaw64(){
+	double sum = 0.0;
+	double e = 0.0;
+	for( int i = 0; i < m; i++){
+		sum += 1.0/(1<<buckets[i]);
+	}
+	sum = 1.0/sum;
+	e = alpha(m)*(m*m)*sum;
+	if(e > 1.0/(30*pow(2,64))){
+		e = -1*pow(2,64)*log(m/(pow(2,64)));
+	}
+	
 	return e;
 }
 
@@ -134,7 +143,7 @@ double percentile(vector <double> v , double x){
 	return (pos - floor(pos)) * v[pos] + ( ceil(pos) - pos) * v[pos+1];
 }
 
-int main(int argc, char* argv[])
+void uui(int argc, char* argv[])
 {
 	//int size = atoi(argv[1]);
 	ofstream file ("test.txt");
@@ -148,14 +157,7 @@ int main(int argc, char* argv[])
 	
 	uint64_t hash;
 	uint64_t hash128[2];
-	/*
-	 while ( getline (cin,line) ){
-		MurmurHash3_x86_128(line.c_str(), line.length(), 0, &hash128);
-		hash = hash128[0];
-		hll.AddItem(hash);
-	 }
-	 */
-	
+
 	int i;
 	int card = 100000;
 	int tests = 1000;
@@ -170,9 +172,9 @@ int main(int argc, char* argv[])
 			MurmurHash3_x86_128(&ca, 4, 0, &hash128);
 			ca++;
 			hash = hash128[0];
-			hll.AddItem(hash);
+			hll.AddItem64(hash);
 			if(j%step == 0){
-				double count = hll.Count();
+				double count = hll.Count64();
 				count = (double)abs(count-j)/j;
 				tab[j/step][i]=count;
 			}
@@ -193,6 +195,6 @@ int main(int argc, char* argv[])
 	
 	
 	
-	printf("%f \n",hll.Count());
+	printf("%f \n",hll.Count64());
 	
 }

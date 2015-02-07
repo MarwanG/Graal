@@ -12,15 +12,23 @@ public:
 	
 	double alpha(int m);
 	
-	void AddItem(uint64_t n);
+	void AddItem64(uint64_t n);
 	
 	void AddItem32(unsigned int n);
 	
-	double Count();
+	double Count64();
 	
-	double Linear();
+	double Linear32();
+	
+	double Linear64();
 	
 	double Count32();
+	
+	double CountRaw64();
+	
+	double CountLinear64();
+	
+	double CountCorrected64();
 	
 	private :
 	int* buckets;
