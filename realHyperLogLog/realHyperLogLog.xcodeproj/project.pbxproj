@@ -10,10 +10,12 @@
 		B095AB9C1A84686700D7A7D2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B095AB9B1A84686700D7A7D2 /* main.cpp */; };
 		B095ABA41A84688F00D7A7D2 /* bitmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B095ABA21A84688F00D7A7D2 /* bitmap.cpp */; };
 		B095ABA71A8469B000D7A7D2 /* MyMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B095ABA51A8469B000D7A7D2 /* MyMap.cpp */; };
-		B0DFCDB61A86985A004AD4BC /* hll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0DFCDB21A86985A004AD4BC /* hll.cpp */; };
-		B0DFCDB71A86985A004AD4BC /* MurmurHash3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0DFCDB41A86985A004AD4BC /* MurmurHash3.cpp */; };
 		B0DFCDBA1A869EFE004AD4BC /* Bencher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0DFCDB81A869EFE004AD4BC /* Bencher.cpp */; };
 		B0DFCDBD1A86A9C2004AD4BC /* Ploter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0DFCDBB1A86A9C2004AD4BC /* Ploter.cpp */; };
+		B0DFCDC31A86D020004AD4BC /* DeltaVarIntDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0DFCDBF1A86D020004AD4BC /* DeltaVarIntDecoder.cpp */; };
+		B0DFCDC41A86D020004AD4BC /* DeltaVarIntEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0DFCDC11A86D020004AD4BC /* DeltaVarIntEncoder.cpp */; };
+		B0DFCDC71A86D085004AD4BC /* hll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0DFCDC51A86D085004AD4BC /* hll.cpp */; };
+		B0DFCDCA1A86D08D004AD4BC /* MurmurHash3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0DFCDC81A86D08D004AD4BC /* MurmurHash3.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,14 +37,18 @@
 		B095ABA31A84688F00D7A7D2 /* bitmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bitmap.h; sourceTree = "<group>"; };
 		B095ABA51A8469B000D7A7D2 /* MyMap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyMap.cpp; sourceTree = "<group>"; };
 		B095ABA61A8469B000D7A7D2 /* MyMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMap.h; sourceTree = "<group>"; };
-		B0DFCDB21A86985A004AD4BC /* hll.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hll.cpp; path = "../GraalProjet/c++/hll.cpp"; sourceTree = "<group>"; };
-		B0DFCDB31A86985A004AD4BC /* hll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hll.h; path = "../GraalProjet/c++/hll.h"; sourceTree = "<group>"; };
-		B0DFCDB41A86985A004AD4BC /* MurmurHash3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MurmurHash3.cpp; path = "../GraalProjet/c++/MurmurHash3.cpp"; sourceTree = "<group>"; };
-		B0DFCDB51A86985A004AD4BC /* MurmurHash3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MurmurHash3.h; path = "../GraalProjet/c++/MurmurHash3.h"; sourceTree = "<group>"; };
 		B0DFCDB81A869EFE004AD4BC /* Bencher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bencher.cpp; sourceTree = "<group>"; };
 		B0DFCDB91A869EFE004AD4BC /* Bencher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bencher.h; sourceTree = "<group>"; };
 		B0DFCDBB1A86A9C2004AD4BC /* Ploter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ploter.cpp; sourceTree = "<group>"; };
 		B0DFCDBC1A86A9C2004AD4BC /* Ploter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ploter.h; sourceTree = "<group>"; };
+		B0DFCDBF1A86D020004AD4BC /* DeltaVarIntDecoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeltaVarIntDecoder.cpp; sourceTree = "<group>"; };
+		B0DFCDC01A86D020004AD4BC /* DeltaVarIntDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeltaVarIntDecoder.h; sourceTree = "<group>"; };
+		B0DFCDC11A86D020004AD4BC /* DeltaVarIntEncoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DeltaVarIntEncoder.cpp; sourceTree = "<group>"; };
+		B0DFCDC21A86D020004AD4BC /* DeltaVarIntEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeltaVarIntEncoder.h; sourceTree = "<group>"; };
+		B0DFCDC51A86D085004AD4BC /* hll.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hll.cpp; sourceTree = "<group>"; };
+		B0DFCDC61A86D085004AD4BC /* hll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hll.h; sourceTree = "<group>"; };
+		B0DFCDC81A86D08D004AD4BC /* MurmurHash3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MurmurHash3.cpp; sourceTree = "<group>"; };
+		B0DFCDC91A86D08D004AD4BC /* MurmurHash3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MurmurHash3.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,7 @@
 		B095AB8F1A84686700D7A7D2 = {
 			isa = PBXGroup;
 			children = (
+				B0DFCDBE1A86CFF1004AD4BC /* varint */,
 				B0DFCDB11A868EA0004AD4BC /* bench */,
 				B0DFCDB01A868E9C004AD4BC /* hll */,
 				B0DFCDAF1A868E89004AD4BC /* map */,
@@ -97,10 +104,10 @@
 		B0DFCDB01A868E9C004AD4BC /* hll */ = {
 			isa = PBXGroup;
 			children = (
-				B0DFCDB21A86985A004AD4BC /* hll.cpp */,
-				B0DFCDB31A86985A004AD4BC /* hll.h */,
-				B0DFCDB41A86985A004AD4BC /* MurmurHash3.cpp */,
-				B0DFCDB51A86985A004AD4BC /* MurmurHash3.h */,
+				B0DFCDC81A86D08D004AD4BC /* MurmurHash3.cpp */,
+				B0DFCDC91A86D08D004AD4BC /* MurmurHash3.h */,
+				B0DFCDC51A86D085004AD4BC /* hll.cpp */,
+				B0DFCDC61A86D085004AD4BC /* hll.h */,
 			);
 			name = hll;
 			sourceTree = "<group>";
@@ -114,6 +121,17 @@
 				B0DFCDBC1A86A9C2004AD4BC /* Ploter.h */,
 			);
 			name = bench;
+			sourceTree = "<group>";
+		};
+		B0DFCDBE1A86CFF1004AD4BC /* varint */ = {
+			isa = PBXGroup;
+			children = (
+				B0DFCDBF1A86D020004AD4BC /* DeltaVarIntDecoder.cpp */,
+				B0DFCDC01A86D020004AD4BC /* DeltaVarIntDecoder.h */,
+				B0DFCDC11A86D020004AD4BC /* DeltaVarIntEncoder.cpp */,
+				B0DFCDC21A86D020004AD4BC /* DeltaVarIntEncoder.h */,
+			);
+			name = varint;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,13 +190,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0DFCDC71A86D085004AD4BC /* hll.cpp in Sources */,
 				B0DFCDBD1A86A9C2004AD4BC /* Ploter.cpp in Sources */,
-				B0DFCDB61A86985A004AD4BC /* hll.cpp in Sources */,
+				B0DFCDCA1A86D08D004AD4BC /* MurmurHash3.cpp in Sources */,
 				B095ABA71A8469B000D7A7D2 /* MyMap.cpp in Sources */,
+				B0DFCDC31A86D020004AD4BC /* DeltaVarIntDecoder.cpp in Sources */,
 				B095ABA41A84688F00D7A7D2 /* bitmap.cpp in Sources */,
+				B0DFCDC41A86D020004AD4BC /* DeltaVarIntEncoder.cpp in Sources */,
 				B0DFCDBA1A869EFE004AD4BC /* Bencher.cpp in Sources */,
 				B095AB9C1A84686700D7A7D2 /* main.cpp in Sources */,
-				B0DFCDB71A86985A004AD4BC /* MurmurHash3.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
