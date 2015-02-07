@@ -112,10 +112,7 @@ double Hll::Count64(){
 	if(e < 5.0/2*m){
 		e = Linear64();
 	 }
-/*	 else if(e > 1.0/(30*pow(2,32))){
-		e = -1*pow(2,32)*log(m/(pow(2,32)));
-	 }
-*/
+
 	return e;
 }
 
@@ -127,11 +124,12 @@ double Hll::CountRaw64(){
 	}
 	sum = 1.0/sum;
 	e = alpha(m)*(m*m)*sum;
-	if(e > 1.0/(30*pow(2,64))){
-		e = -1*pow(2,64)*log(m/(pow(2,64)));
-	}
-	
+
 	return e;
+}
+
+double Hll::CountLinear64(){
+	return Linear64();
 }
 
 double percentile(vector <double> v , double x){
